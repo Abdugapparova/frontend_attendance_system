@@ -24,9 +24,13 @@ function SignIn() {
   };
 
   const handleSignIn = () => {
-    if (email === '38516@iitu.edu.kz' && password === '123123') {
+    if (email === '38516@iitu.edu.kz' && password === '123123'){
       navigate('/mainpage');
-    } else {
+    }
+    if (email === '38515@iitu.edu.kz' && password === '124124') {
+      navigate("/mainpage2");
+    } 
+    else {
       setError('Incorrect email or password');
 
             // Clear the error state after a delay (e.g., 3 seconds)
@@ -64,7 +68,7 @@ function SignIn() {
           </div>
           {error && <p className="error-message">{error}</p>}
 
-          <div className='help'>
+          {/* <div className='help'>
             <div className="rem">
               <input
                 className="rememberInput"
@@ -81,7 +85,7 @@ function SignIn() {
             <div className="forgot-pass">
               <a href="/forgot-password">Forgot Password?</a>
             </div>
-          </div>
+          </div> */}
           <button className="buttonLogin" onClick={handleSignIn}>
             Login
           </button>
