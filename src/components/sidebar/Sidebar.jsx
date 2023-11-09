@@ -26,7 +26,8 @@ function Sidebar() {
         { title: "Attendance Sheet", src: sheet },
         { title: "Attendance", src: attendance },
         { title: "Support", src: help },
-        { title: "Logout", src: exit, gap: true },
+
+        { title: "Logout", src: exit, gap: true, to:"/"},
 
     ];
     return (
