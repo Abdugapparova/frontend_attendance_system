@@ -1,0 +1,40 @@
+.bg-dark-purple.collapsed img {
+  width: 70px; /* Adjust the width as needed */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  /* Add other styles for the logo container */
+}
+
+.iconsMenu {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding-left: 5px;
+}
+.iconsMenu:hover {
+  text-decoration: none;
+  color: whitesmoke;
+}
+.active-link {
+  background-color: rgba(217, 217, 217, 0.2);
+  padding: 15px 0 15px 0px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.iconsMenu img {
+  margin-right: 8px;
+}
+.logoSidebar {
+  width: 40px;
+  height: 60px;
+}
+.text-white {
+  text-align: left;
+  margin-left: 2px;
+  font-family: Prosto One;
+  font-size: 18px;
+}

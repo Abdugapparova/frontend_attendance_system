@@ -9,6 +9,7 @@ function SignIn() {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -26,7 +27,13 @@ function SignIn() {
     if (email === '38516@iitu.edu.kz' && password === '123123') {
       navigate('/mainpage');
     } else {
-      alert('Incorrect email or password');
+      setError('Incorrect email or password');
+
+            // Clear the error state after a delay (e.g., 3 seconds)
+      // setTimeout(() => {
+      //   setError('');
+      // }, 5000);
+
     }
   };
 
@@ -35,26 +42,28 @@ function SignIn() {
       <div className="content">
         <div className="text">Sign In</div>
         <form action="#">
-          <div className="field">
+        <div className={`field ${error ? 'error' : ''}`}>
             <input
               required=""
               type="text"
-              className="input"
+              className={`input ${error ? 'error' : ''}`}
               placeholder="Email"
               value={email}
               onChange={handleEmailChange}
             />
           </div>
-          <div className="field">
+          <div className={`field ${error ? 'error' : ''}`}>
             <input
               required=""
               type="password"
-              className="input"
+              className={`input ${error ? 'error' : ''}`}
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
             />
           </div>
+          {error && <p className="error-message">{error}</p>}
+
           <div className='help'>
             <div className="rem">
               <input
@@ -70,7 +79,7 @@ function SignIn() {
               </label>
             </div>
             <div className="forgot-pass">
-              <a href="#">Forgot Password?</a>
+              <a href="/forgot-password">Forgot Password?</a>
             </div>
           </div>
           <button className="buttonLogin" onClick={handleSignIn}>

@@ -2,6 +2,8 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from './modules/mainpage/Mainpage';
 import SignIn from "./modules/login/SignIn";
+import ForgotPassword from './modules/login/ForgotPassword'; 
+import Schedule from "./modules/schedule/Schedule";
 
 
 function App() {
@@ -14,9 +16,8 @@ function App() {
         <Routes>
           <Route index path="/" element={<SignIn />} />
           <Route index path="/mainpage" element={<MainPage />} />
-
-
-
+          <Route index path="/schedule" element={<Schedule />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </BrowserRouter>
     </div>

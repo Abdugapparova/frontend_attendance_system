@@ -1,3 +1,6 @@
 body {
   background-color: #ebeef2;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

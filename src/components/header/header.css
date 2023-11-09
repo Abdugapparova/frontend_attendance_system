@@ -1,19 +1,33 @@
-.Header {
-  /* align-items: center; */
+/* .Header {
+  align-items: center;
   background-color: #343434;
   height: 60px;
   width: 100%;
   margin: 0;
+  padding: 0 20px;
 }
 .contentHeader {
-  display: inline;
+  display: flex;
+  align-items: center;
 }
+.menu-icon {
+  display: flex;
+  align-items: center;
+  justify-items: left;
+}
+
+.menuIcon {
+  width: 25px;
+  height: 25px;
+}
+.nav-menu {
+  height: 100%;
+}
+
 .Logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
-
   color: #fff;
   font-family: Prosto One;
   font-size: 16px;
@@ -22,50 +36,34 @@
   line-height: normal;
   text-align: left;
 }
-.menu {
-  float: left;
-}
-.menuIcon {
-  width: 25px;
-  height: 25px;
-  margin-left: 10px;
-  margin-top: 15px;
-}
-.Icons {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-top: -35px;
-}
+
 .logo {
   background-color: #225dac;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;
   width: 30px;
   height: 30px;
+  margin-right: 10px;
   margin-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.Icons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
 .icons {
   width: 22px;
   height: 22px;
+  margin-left: 10px;
   padding-left: 25px;
   padding-right: 25px;
-  padding-bottom: 10px;
 }
-
-/* MObile version */
-/* .nav-menu:active{
-        .icons {
-            display: flex;
-            justify-content: end;
-        }
-    } */
-
-/* Header Default */
 
 .Header1 {
   width: 100%;
@@ -81,4 +79,4 @@
   align-items: flex-start;
   gap: 9px;
   flex-shrink: 0;
-} */
+}*/

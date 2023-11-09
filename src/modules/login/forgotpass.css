@@ -1,0 +1,30 @@
+/* ForgotPassword.css */
+.ForgotPassword {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.buttonSendResetLink {
+  margin: 15px 0;
+  width: 100%;
+  height: 50px;
+  background: #214371;
+  border-radius: 10px;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  box-shadow: 2px 2px 5px #babecc, -5px -5px 10px #ffffff73;
+}
+.field.error1 {
+  border-color: #ee4545;
+}
+.input.error1 {
+  border-color: #ee4545;
+}

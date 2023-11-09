@@ -6,7 +6,7 @@
   font-family: Poppins;
 }
 .content {
-  width: 330px;
+  width: 400px;
   padding: 40px 30px;
   border-radius: 10px;
   box-shadow: -3px -3px 7px #ffffff73, 2px 2px 5px rgba(94, 104, 121, 0.288);
@@ -15,6 +15,7 @@
 .loginLink {
   text-decoration: none;
 }
+
 .content .text {
   /* font-size: 25px;
   font-weight: 600;
@@ -25,12 +26,13 @@
   font-family: Poppins;
   font-size: 24px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
+  text-align: left;
 }
 
 .field {
-  height: 40px;
+  height: 50px;
   width: 100%;
   display: flex;
   position: relative;
@@ -87,6 +89,7 @@
   font-size: 14px;
   color: red;
   text-decoration: none;
+  font-weight: 300;
 }
 
 .forgot-pass:hover a {
@@ -104,8 +107,9 @@
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: normal;
+  margin-left: 2px;
 }
 .rem input[type="checkbox"] {
   width: 16px;
@@ -115,7 +119,9 @@
   background: #fff;
 }
 .rememberInput {
-  align-self: center;
+  /* align-self: center; */
+  margin-top: 2px;
+  padding-left: 10px;
 }
 
 .buttonLogin {
@@ -127,7 +133,7 @@
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   border: none;
   outline: none;
@@ -154,4 +160,17 @@
 
 .sign-up a:hover {
   text-decoration: underline;
+}
+.field.error {
+  border-color: #ee4545;
+}
+.input.error {
+  border-color: #ee4545;
+}
+
+.error-message {
+  color: #ee4545; /* Red error message text color */
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: left;
 }
