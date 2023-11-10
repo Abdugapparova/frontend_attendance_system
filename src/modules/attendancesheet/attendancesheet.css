@@ -1,0 +1,79 @@
+.attendance-table th.icon-column,
+.attendance-table td.icon-column {
+  width: 40px;
+}
+.wrapper__dashboard {
+  overflow: auto;
+}
+
+.icon-container {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.green-icon {
+  background-color: #589c5f;
+  width: 30px;
+  height: 30px;
+}
+
+.yellow-icon {
+  background-color: #ffe609;
+  width: 30px;
+  height: 30px;
+}
+
+.red-icon {
+  background-color: #d60435;
+  width: 30px;
+  height: 30px;
+}
+
+.attendance-table th,
+.attendance-table td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+  height: 50px;
+  /* position: relative; */
+  border-radius: 5%;
+}
+
+.buttons-container {
+  display: flex;
+  /* justify-content: flex-start; */
+}
+
+.green-button,
+.yellow-button,
+.red-button {
+  background-color: #214371;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+/* .green-button:hover,
+.yellow-button:hover,
+.red-button:hover {
+  background-color: #2ecc71;
+} */
+
+.green-button {
+  background-color: #589c5f;
+}
+
+.yellow-button {
+  background-color: #ffe609;
+  color: #6f6e6e;
+}
+
+.red-button {
+  background-color: #d60435;
+}

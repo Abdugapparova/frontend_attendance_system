@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./mainpage.css";
-import { Routes, Route } from "react-router-dom";
-import Schedule from "../schedule/Schedule";
-import Sidebar2 from "../../components/sidebar/Sidebar2";
+import "./dashboard.css";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 
 
-function Mainpage2() {
+function Dashboard() {
   return (
     <div className="Dashboard">
       <div className="flex">
-        <Sidebar2 />
+        <Sidebar />
         <div className="h-screen flex-1 p-7">
           <h1 className="head"> Dashboard</h1>
           <section class="dashboard">
@@ -23,24 +20,26 @@ function Mainpage2() {
               <div class="disciplines">
                 <div class="discipline">
                   <div class="time">08:00 - 08:50</div>
-                  <div className="name">
-                  History and philosophy of science, 'L' (Kydyrbekuly D.), Main, 801
+                  <div class="name">
+                    Software Development Management and Reengineering,'Lab' (
+                    Atymtayeva L.), Main, 702
                   </div>
-                  <div className="status status__present"></div>
+                  <div class="status status__present">Present</div>
                 </div>
-                <div className="discipline">
-                  <div className="time">12:00 - 12:50</div>
-                  <div className="name">
-                  Software Development Management and Reengineering, 'Lab' (Atymtayeva L.), Main, 702
+                <div class="discipline">
+                  <div class="time">09:00 - 09:50</div>
+                  <div class="name">
+                    History and philosophy of science,'L' ( Кydyrbekuly D.), Main, 901
                   </div>
-                  <div className="status status__absent"></div>
+                  <div class="status status__absent">Absent</div>
                 </div>
-                <div className="discipline">
-                  <div className="time">13:00 - 13:50</div>
-                  <div className="name">
-                    Software Development Management and Reengineering, 'Lab' (Atymtayeva L.), Main, 702
+                <div class="discipline">
+                  <div class="time">08:00 - 08:50</div>
+                  <div class="name">
+                    Software Development Management and Reengineering,'Lab' (
+                    Atymtayeva L.), Main, 702
                   </div>
-                  <div className="status status__present"></div>
+                  <div class="status status__present">Present</div>
                 </div>
               </div>
             </div>
@@ -51,7 +50,7 @@ function Mainpage2() {
   );
 }
 
-export default Mainpage2;
+export default Dashboard;
 
 
 {/* // <div className="Mainpage">

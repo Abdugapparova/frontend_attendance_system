@@ -1,0 +1,45 @@
+.instructions {
+  text-align: left;
+}
+
+.red-text {
+  color: red;
+}
+
+.instructions ol {
+  list-style-type: none;
+  padding-left: 0;
+}
+.flex-1 {
+  overflow-y: auto;
+}
+.wrapper__dashboard {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.instructions {
+  text-align: left;
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.red-text {
+  color: red;
+}
+
+.instructions ol {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.flex-1 {
+  overflow-y: auto;
+}
+
+.wrapper__dashboard {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+}

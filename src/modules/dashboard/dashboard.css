@@ -369,11 +369,13 @@ body {
 }
 .dashboard {
   background-color: #fff;
-  max-width: 1166px;
+  /* max-width: 1166px; */
   height: 500px;
   margin: 50px auto;
   border-radius: 20px;
   box-shadow: 0 4px 35px 0 rgba(76, 76, 76, 0.08);
+  margin-left: 10px;
+  margin-top: 30px;
 }
 .wrapper__dashboard {
   padding: 50px;
@@ -439,7 +441,7 @@ body {
   font-weight: 400;
   line-height: normal;
   text-align: left;
-  width: 250px;
+  /* width: 250px; */
   height: 40px;
   margin: 20px;
 }
@@ -492,4 +494,10 @@ body {
 }
 td {
   border-top: black 1px;
+} */
+
+/* .dashboard1 {
+  margin-left: 10px;
+  margin-top: 40px;
+  height: 500px;
 } */

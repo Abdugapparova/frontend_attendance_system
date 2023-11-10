@@ -17,41 +17,46 @@ import user from "../../assets/images/user.png";
 
 function Sidebar() {
     const [open, setOpen] = useState(true);
+    const [activeLink, setActiveLink] = useState(window.location.pathname);
+
 
     const Menus = [
-        { title: "Dashboard", src: home, to: "/mainpage" },
+        { title: "Dashboard", src: home, to: "/dashboard" },
         { title: "Account", src: user, to: "/profile" },
 
         { title: "Schedule ", src: schedule, gap: true, to: "/schedule" },
-        { title: "Attendance Sheet", src: sheet },
-        { title: "Attendance", src: attendance },
-        { title: "Support", src: help },
+        { title: "Attendance Sheet", src: sheet, to: "/attendancesheet" },
+        { title: "Attendance", src: attendance, to: "/attendance" },
+        { title: "Support", src: help, to: "/support" },
 
-        { title: "Logout", src: exit, gap: true, to:"/"},
+        { title: "Logout", src: exit, gap: true, to: "/", className: "logout-link" },
+
+
 
     ];
     return (
-            <div className={` ${open ? "w-72" : "w-20 "} bg-dark-purple h-screen p-5  pt-8 relative duration-300`}>
-                <img
-                    src={control}
-                    className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`}
-                    onClick={() => setOpen(!open)}
-                />
-                <div className="flex gap-x-4 items-center">
-                    <img src={logo} className="logoSidebar"/>
-                    <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"}`}>
-                        Attendance <br />System
-                    </h1>
-                </div>
+        <div className={` ${open ? "w-60" : "w-20 "} bg-dark-purple h-screen pt-8 relative duration-300`}>
+            <img
+                src={control}
+                className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`}
+                onClick={() => setOpen(!open)}
+            />
+            <div className="flex gap-x-3 items-center">
+                <img src={logo} className="logoSidebar" />
+                <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"}`}>
+                    Attendance <br />System
+                </h1>
+            </div>
             <ul className="pt-6">
                 {Menus.map((Menu, index) => (
                     <li
                         key={index}
-                        className={`flex rounded-md p-2 cursor-pointer text-gray-300 text-sm items-center gap-x-4
-                        ${Menu.gap ? "mt-9" : "mt-2"} `}>
+                        className={`flex rounded-md p-1 cursor-pointer text-gray-300 text-sm items-center gap-x-4
+                        ${Menu.gap ? "mt-12" : "mt-5"} `}>
                         
                         <NavLink to={Menu.to}
-                            className={`iconsMenu ${Menu.to === window.location.pathname ? 'active-link' : ''}`}>
+                            className={`iconsMenu ${Menu.to === activeLink ? 'active-link' : ''}`}
+                            onClick={() => setActiveLink(Menu.to)}>
                             <img src={`${Menu.src}`} className="icooon" />
                             <span className={`${!open && "hidden"} origin-left duration-200`}>
                                 {Menu.title}

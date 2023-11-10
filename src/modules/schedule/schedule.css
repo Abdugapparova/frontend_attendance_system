@@ -1,0 +1,29 @@
+.day-of-the-week {
+  padding: 10px;
+  font-family: Poppins;
+}
+.discipline {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+}
+.navigation-arrows {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation-arrows button {
+  background-color: #1a3550;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 100px;
+  /* align-self: center; */
+  margin-top: 100px;
+}
+
+.navigation-arrows button:hover {
+  background-color: #13283d;
+}
