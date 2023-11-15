@@ -13,11 +13,12 @@ import help from "../../assets/images/help.png";
 import exit from "../../assets/images/exit.png";
 import user from "../../assets/images/user.png";
 
+import { useSidebar } from "./SidebarProvider";
+
 
 
 function Sidebar() {
-    const [open, setOpen] = useState(true);
-    const [activeLink, setActiveLink] = useState(window.location.pathname);
+    const { open, setOpen, activeLink, setActiveLink } = useSidebar();
 
 
     const Menus = [
@@ -56,7 +57,7 @@ function Sidebar() {
                         
                         <NavLink to={Menu.to}
                             className={`iconsMenu ${Menu.to === activeLink ? 'active-link' : ''}`}
-                            onClick={() => setActiveLink(Menu.to)}>
+                            onClick={() => setActiveLink(Menu.to)} title={Menu.title}>
                             <img src={`${Menu.src}`} className="icooon" />
                             <span className={`${!open && "hidden"} origin-left duration-200`}>
                                 {Menu.title}

@@ -1,29 +1,40 @@
-.day-of-the-week {
+.days-of-the-week {
   padding: 10px;
   font-family: Poppins;
+  display: inline-block;
+  margin: 0 10px;
+
+  color: #000;
+  text-align: center;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-.discipline {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 15px;
-}
+
 .navigation-arrows {
-  display: flex;
-  justify-content: space-between;
+  display: inline-block;
 }
 
 .navigation-arrows button {
   background-color: #1a3550;
   color: white;
   border: none;
-  padding: 5px;
-  cursor: pointer;
+  padding: 2px;
   border-radius: 5px;
-  height: 100px;
-  /* align-self: center; */
-  margin-top: 100px;
+  width: 60px;
+  margin-right: 10px;
 }
 
 .navigation-arrows button:hover {
   background-color: #13283d;
+}
+
+@media screen and (max-width: 500px) {
+  .days-of-the-week {
+    font-size: 20px;
+  }
+  .navigation-arrows button {
+    width: 30px;
+  }
 }

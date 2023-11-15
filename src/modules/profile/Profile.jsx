@@ -8,9 +8,12 @@ function Profile() {
       <div className="flex">
         <Sidebar />
         <div className="h-screen flex-1 p-7">
-          <section className="profile">
+        <h1 className="head">Profile</h1>
+
+          <section className="dashboard">
             <div className="wrapper__profile">
-              <h6 className="head_profile">Yeraliyev Berik</h6>
+              <h6 className="head_profile">Yeraliyev Berik <br/>
+            38516@iitu.edu.kz </h6>
               <table className="profile-table">
                 <tbody>
                   <tr>

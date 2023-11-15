@@ -4,7 +4,6 @@ import "../dashboard/dashboard.css";
 import Sidebar from "../../components/sidebar/Sidebar";
 
 function Schedule() {
-  // const [currentDay, setCurrentDay] = useState("Monday");
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const currentDay = daysOfWeek[currentDayIndex];
@@ -127,10 +126,7 @@ function Schedule() {
       },
     ],
   };
-
-  // const handleDayChange = (day) => {
-  //   setCurrentDay(day);
-  // };
+  
   const handleDayChange = (direction) => {
     if (direction === "prev") {
       setCurrentDayIndex((prevIndex) => (prevIndex - 1 + daysOfWeek.length) % daysOfWeek.length);
@@ -149,10 +145,11 @@ function Schedule() {
           
           <section className="dashboard">
             <div className="wrapper__dashboard">
-              <div className="day-of-the-week">{currentDay}</div>
               <div className="navigation-arrows">
-              <button onClick={() => handleDayChange("prev")}>&larr;</button>
-              
+                <button onClick={() => handleDayChange("prev")} className="prev">&larr;</button>
+                <div className="days-of-the-week">{currentDay}</div>
+                <button onClick={() => handleDayChange("next")} className="next">&rarr;</button>
+              </div>
                 <div className="disciplines">
                   {schedules[currentDay].map((item, index) => (
                     <div className="discipline" key={index}>
@@ -162,8 +159,6 @@ function Schedule() {
                     </div>
                   ))}
                 </div>
-                <button onClick={() => handleDayChange("next")}>&rarr;</button>
-              </div>
             </div>
           </section>
             

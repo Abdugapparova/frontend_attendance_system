@@ -460,44 +460,17 @@ body {
   .head {
     text-align: center;
     margin-left: 0;
+    font-size: 30px;
+  }
+  .day-of-the-week {
+    font-size: 20px;
+  }
+  .date {
+    font-size: 15px;
+  }
+  .date__btn {
+    width: 100px;
+    height: 30px;
+    padding: 5px 13px;
   }
 }
-
-/* .header {
-  margin: 0;
-}
-
-.contentMainpage {
-  display: grid;
-  grid:
-    "day date"
-    "table table";
-  margin: 40px;
-  background-color: white;
-  padding: 50px;
-  border-radius: 10px;
-}
-.day {
-  grid-area: day;
-}
-.date {
-  grid-area: date;
-  background-color: #214371;
-  color: white;
-  padding: 5px;
-  width: 20%;
-  margin-left: 70%;
-  border-radius: 10px;
-}
-.scheduleTable {
-  grid-area: table;
-}
-td {
-  border-top: black 1px;
-} */
-
-/* .dashboard1 {
-  margin-left: 10px;
-  margin-top: 40px;
-  height: 500px;
-} */

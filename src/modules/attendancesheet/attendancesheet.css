@@ -58,13 +58,6 @@
   border-radius: 7px;
   font-weight: bold;
 }
-
-/* .green-button:hover,
-.yellow-button:hover,
-.red-button:hover {
-  background-color: #2ecc71;
-} */
-
 .green-button {
   background-color: #589c5f;
 }
@@ -76,4 +69,28 @@
 
 .red-button {
   background-color: #d60435;
+}
+@media screen and (max-width: 500px) {
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .green-button,
+  .yellow-button,
+  .red-button {
+    margin-top: 5px;
+    font-size: 15px;
+    display: block;
+    width: 80%;
+  }
+  .head {
+    margin-left: 20%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .buttons-container {
+    margin-top: 50px;
+  }
 }

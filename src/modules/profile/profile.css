@@ -1,5 +1,4 @@
 .head_profile {
-  margin: 20px auto;
   font-size: 28px;
   font-weight: bold;
 }
@@ -7,13 +6,15 @@
 .profile {
   background-color: #fff;
   max-width: 600px;
-  margin: 90px auto;
+  align-items: center;
   border-radius: 20px;
   box-shadow: 0 4px 35px 0 rgba(76, 76, 76, 0.08);
 }
 
 .wrapper__profile {
   padding: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-table {
@@ -43,4 +44,17 @@
   background-color: #ddd;
   color: #333;
   font-weight: normal;
+}
+@media screen and (max-width: 500px) {
+  .head_profile {
+    font-size: 15px;
+    display: inline-block;
+  }
+  .blue-background,
+  .gray-background {
+    font-size: 12px;
+  }
+  .profile-table {
+    width: 90%;
+  }
 }
