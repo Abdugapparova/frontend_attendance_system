@@ -8,12 +8,13 @@ function Profile() {
       <div className="flex">
         <Sidebar />
         <div className="h-screen flex-1 p-7">
-        <h1 className="head">Profile</h1>
+          <h1 className="head">Profile</h1>
 
           <section className="dashboard">
-            <div className="wrapper__profile">
-              <h6 className="head_profile">Yeraliyev Berik <br/>
-            38516@iitu.edu.kz </h6>
+              <h6 className="head_profile">Yeraliyev Berik <br />
+              38516@iitu.edu.kz </h6>
+              <div className="wrapper__profile">
+
               <table className="profile-table">
                 <tbody>
                   <tr>
@@ -43,9 +44,17 @@ function Profile() {
                   <tr>
                     <td className="blue-background">Geographic Information Systems</td>
                     <td className="gray-background">63%</td>
-                   </tr> 
+                  </tr>
                 </tbody>
               </table>
+              <div className="att">
+                <div className="att1">
+                  <p className="tt">Student who can mark you</p>
+                  Abdugapparova Kamila <br />38515@iitu.edu.kz</div>
+                <div className="att2">
+                  <p className="tt">Student you can mark</p>
+                  Moldatayeva Assem  <br />38533@iitu.edu.kz</div>
+              </div>
             </div>
           </section>
         </div>

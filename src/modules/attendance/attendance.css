@@ -1,7 +1,16 @@
 .wrapper__dashboard {
   overflow: auto;
 }
-
+.helpAttendance {
+  padding: 20px;
+  background-color: #2f70af;
+  color: white;
+  border-radius: 10px;
+  font-family: Poppins;
+  text-align: left;
+  margin-left: 10px;
+  width: 50%;
+}
 .attendance-table {
   border-collapse: collapse;
   margin-top: 20px;
@@ -84,4 +93,23 @@
   margin-right: 10px;
   width: 20px; /* Set the desired width */
   height: 20px; /* Set the desired height */
+}
+
+.attendance-table tr.today-row {
+  background-color: #e1dce0;
+  font-weight: bold;
+}
+
+.attendance-table tr.past-row {
+  color: #aaa;
+}
+.attendance-table tr.past-row button {
+  background-color: #aaafb5;
+}
+@media screen and (max-width: 500px) {
+  .helpAttendance {
+    align-self: center;
+    margin-left: 25%;
+    width: 70%;
+  }
 }

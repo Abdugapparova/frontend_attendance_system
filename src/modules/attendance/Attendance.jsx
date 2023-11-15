@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './attendance.css';
 import "../dashboard/dashboard.css";
 import Sidebar from '../../components/sidebar/Sidebar';
@@ -6,7 +6,7 @@ import Sidebar from '../../components/sidebar/Sidebar';
 function Attendance() {
   const initialData = [
     {
-      date: '2023-09-04',
+      date: '2023-11-09',
       softwareDevelopment: { status: 'Present', uploaded: false },
       historyAndPhilosophy: { status: 'Absent', uploaded: false },
       geographicInformationSystems: { status: 'Present', uploaded: false },
@@ -15,7 +15,7 @@ function Attendance() {
 
     },
     {
-      date: '2023-09-05',
+      date: '2023-11-10',
       softwareDevelopment: { status: 'Present', uploaded: false },
       historyAndPhilosophy: { status: 'Absent', uploaded: false },
       geographicInformationSystems: { status: 'Present', uploaded: false },
@@ -23,7 +23,7 @@ function Attendance() {
       Blockchain: { status: 'Present', uploaded: false},
     },
     {
-      date: '2023-09-06',
+      date: '2023-11-13',
       softwareDevelopment: { status: 'Present', uploaded: false },
       historyAndPhilosophy: { status: 'Absent', uploaded: false },
       geographicInformationSystems: { status: 'Present', uploaded: false },
@@ -31,7 +31,7 @@ function Attendance() {
       Blockchain: { status: 'Present', uploaded: false},
     },
     {
-      date: '2023-09-07',
+      date: '2023-11-14',
       softwareDevelopment: { status: 'Present', uploaded: false },
       historyAndPhilosophy: { status: 'Absent', uploaded: false },
       geographicInformationSystems: { status: 'Present', uploaded: false },
@@ -39,7 +39,7 @@ function Attendance() {
       Blockchain: { status: 'Present', uploaded: false},
     },
     {
-      date: '2023-09-08',
+      date: '2023-11-15',
       softwareDevelopment: { status: 'Present', uploaded: false },
       historyAndPhilosophy: { status: 'Absent', uploaded: false },
       geographicInformationSystems: { status: 'Present', uploaded: false },
@@ -47,7 +47,7 @@ function Attendance() {
       Blockchain: { status: 'Present', uploaded: false},
     },
     {
-      date: '2023-09-09',
+      date: '2023-11-16',
       softwareDevelopment: { status: 'Present', uploaded: false },
       historyAndPhilosophy: { status: 'Absent', uploaded: false },
       geographicInformationSystems: { status: 'Present', uploaded: false },
@@ -55,7 +55,7 @@ function Attendance() {
       Blockchain: { status: 'Present', uploaded: false},
     },
     {
-      date: '2023-09-10',
+      date: '2023-11-17',
       softwareDevelopment: { status: 'Present', uploaded: false },
       historyAndPhilosophy: { status: 'Absent', uploaded: false },
       geographicInformationSystems: { status: 'Present', uploaded: false },
@@ -73,6 +73,15 @@ function Attendance() {
       return newData;
     });
   };
+
+  const [todayDate, setTodayDate] = useState('');
+
+  useEffect(() => {
+    // Получаем текущую дату в формате 'yyyy-MM-dd'
+    const currentDate = new Date().toISOString().split('T')[0];
+    setTodayDate(currentDate);
+  }, []);
+
   const [checkedRowsSoftware, setCheckedRowsSoftware] = useState([]);
   const [checkedRowsHistory, setCheckedRowsHistory] = useState([]);
   const [checkedRowsGeographic, setCheckedRowsGeographic] = useState([]);
@@ -128,8 +137,13 @@ function Attendance() {
       <div className="flex">
         <Sidebar />
         <div className="h-screen flex-1 p-7">
-          <h1 className="head"> Attendance</h1>
+          <h1 className="head">  Attendance</h1>
+          <div className='helpAttendance'>
+              <p>Checkbox - click if you want attend your class</p>
+              <p>Reason button - to upload your absence certificate</p>
+          </div>
           <section className="dashboard">
+            
             <div className="wrapper__dashboard">
               <table className="attendance-table">
                 <thead>
@@ -144,9 +158,9 @@ function Attendance() {
                 </thead>
                 <tbody>
                   {attendanceData.map((rowData, index) => (
-                    <tr key={index}>
-                      <td>{rowData.date}</td>
-                      <td className={`status status__${rowData.softwareDevelopment.status.toLowerCase()}`}>
+                    <tr key={index} className={rowData.date === todayDate ? 'today-row' : (rowData.date < todayDate ? 'past-row' : '')}>
+                    <td>{rowData.date}</td>
+                    <td className={`status status__${rowData.softwareDevelopment.status.toLowerCase()}`}>
                         <div className="checkbox-upload-container">
                           <input
                             type="checkbox"
@@ -158,10 +172,10 @@ function Attendance() {
                             className={`upload-button ${rowData.softwareDevelopment.uploaded ? 'uploaded' : ''}`}
                             onClick={() => handleUpload('softwareDevelopment', index)}
                           >
-                            {rowData.softwareDevelopment.uploaded ? 'Uploaded' : 'Upload'}
+                            {rowData.softwareDevelopment.uploaded ? 'Reason' : 'Reason'}
                           </button>
                         </div>
-                      </td>
+                    </td>
 
 
 
@@ -176,7 +190,7 @@ function Attendance() {
                           className={`upload-button ${rowData.historyAndPhilosophy.uploaded ? 'uploaded' : ''}`}
                           onClick={() => handleUpload('historyAndPhilosophy', index)}
                         >
-                          {rowData.historyAndPhilosophy.uploaded ? 'Uploaded' : 'Upload'}
+                          {rowData.historyAndPhilosophy.uploaded ? 'Reason' : 'Reason'}
                         </button>
                       </td>
 
@@ -192,7 +206,7 @@ function Attendance() {
                           className={`upload-button ${rowData.geographicInformationSystems.uploaded ? 'uploaded' : ''}`}
                           onClick={() => handleUpload('geographicInformationSystems', index)}
                         >
-                          {rowData.geographicInformationSystems.uploaded ? 'Uploaded' : 'Upload'}
+                          {rowData.geographicInformationSystems.uploaded ? 'Reason' : 'Reason'}
                         </button>
                       </td>
 
@@ -208,7 +222,7 @@ function Attendance() {
                           className={`upload-button ${rowData.AdvancedProgramming.uploaded ? 'uploaded' : ''}`}
                           onClick={() => handleUpload('AdvancedProgramming', index)}
                         >
-                          {rowData.AdvancedProgramming.uploaded ? 'Uploaded' : 'Upload'}
+                          {rowData.AdvancedProgramming.uploaded ? 'Reason' : 'Reason'}
                         </button>
                       </td>
 
@@ -224,7 +238,7 @@ function Attendance() {
                           className={`upload-button ${rowData.Blockchain.uploaded ? 'uploaded' : ''}`}
                           onClick={() => handleUpload('Blockchain', index)}
                         >
-                          {rowData.Blockchain.uploaded ? 'Uploaded' : 'Upload'}
+                          {rowData.Blockchain.uploaded ? 'Reason' : 'Reason'}
                         </button>
                       </td>
                     </tr>
