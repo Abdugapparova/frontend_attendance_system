@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './attendance.css';
 import "../dashboard/dashboard.css";
-import Sidebar from '../../components/sidebar/Sidebar';
+import Sidebar from '../../../components/sidebar/Sidebar';
 
 function Attendance() {
   const initialData = [

@@ -1,7 +1,7 @@
 import React from "react";
 import "./support.css";
-import "../dashboard/dashboard.css";
-import Sidebar from "../../components/sidebar/Sidebar";
+import "../dashboard_teacher/dashboard.css";
+import Sidebar from "../../../components/sidebar/Sidebar";
 
 function Support() {
   return (
@@ -17,7 +17,7 @@ function Support() {
                   <li>
                     <strong className="red-text">1. Sign in:</strong>
                     <ul>
-                      <li>1.1 Enter the university email address. For example: 38522@iitu.edu.kz.</li>
+                      <li>1.1 Enter the university email address. For example: :l.atymtaeva@iitu.edu.kz.</li>
                       <li>1.2. Enter your account password.</li>
                       <li>1.3. You can click on the eye icon to see what you have entered in the password box.</li>
                       <li>1.4. You can click on the check box to save your password in your browser.</li>

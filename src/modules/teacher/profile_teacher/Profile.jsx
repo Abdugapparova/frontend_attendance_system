@@ -1,6 +1,6 @@
 import React from "react";
 import "./profile.css";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Sidebar from "../../../components/sidebar/Sidebar";
 
 function Profile() {
   return (
@@ -11,8 +11,8 @@ function Profile() {
           <h1 className="head">Profile</h1>
 
           <section className="dashboard">
-              <h6 className="head_profile">Yeraliyev Berik <br />
-              38516@iitu.edu.kz </h6>
+            <h6 className="head_profile">Lyazzat Atymtayeva </h6>
+            <div className="predmet">Software Architecture</div>
               <div className="wrapper__profile">
 
               <table className="profile-table">

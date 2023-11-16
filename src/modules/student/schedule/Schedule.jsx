@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./schedule.css";
 import "../dashboard/dashboard.css";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Sidebar from "../../../components/sidebar/Sidebar";
 
 function Schedule() {
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];

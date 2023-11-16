@@ -1,0 +1,115 @@
+.wrapper__dashboard {
+  overflow: auto;
+}
+.helpAttendance {
+  padding: 20px;
+  background-color: #2f70af;
+  color: white;
+  border-radius: 10px;
+  font-family: Poppins;
+  text-align: left;
+  margin-left: 10px;
+  width: 50%;
+}
+.attendance-table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  white-space: nowrap;
+  min-width: 600px;
+  background-color: #fff;
+  table-layout: fixed;
+  border: #000;
+  border-radius: 50px;
+}
+
+.attendance-table th,
+.attendance-table td {
+  border: 3px solid #000;
+  padding: 8px;
+  text-align: center;
+  height: 50px;
+  position: relative;
+}
+.dashboard {
+  border-radius: 10px;
+}
+.attendance-table th {
+  font-weight: normal;
+}
+
+.attendance-table th:nth-child(1),
+.attendance-table td:nth-child(1) {
+  width: 20%;
+}
+
+.attendance-table th:nth-child(2),
+.attendance-table td:nth-child(2) {
+  width: 50%;
+}
+
+.attendance-table th:nth-child(3),
+.attendance-table td:nth-child(3) {
+  width: 25%;
+}
+
+.attendance-table th:nth-child(4),
+.attendance-table td:nth-child(4) {
+  width: 25%;
+}
+
+.upload-button {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #214371;
+  color: #fff;
+  border: none;
+  padding: 5px 40px;
+  cursor: pointer;
+  border-radius: 7px;
+  margin-left: 5px;
+}
+
+.upload-button:hover {
+  background-color: #214371;
+}
+
+.upload-button.uploaded {
+  background-color: #589c5f;
+  border: none;
+}
+
+.fa-upload {
+  margin-right: 5px;
+}
+
+.checkbox-upload-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+.custom-checkbox {
+  margin-right: 10px;
+  width: 20px; /* Set the desired width */
+  height: 20px; /* Set the desired height */
+}
+
+.attendance-table tr.today-row {
+  background-color: #e1dce0;
+  font-weight: bold;
+}
+
+.attendance-table tr.past-row {
+  color: #aaa;
+}
+.attendance-table tr.past-row button {
+  background-color: #aaafb5;
+}
+@media screen and (max-width: 500px) {
+  .helpAttendance {
+    align-self: center;
+    margin-left: 25%;
+    width: 70%;
+  }
+}
