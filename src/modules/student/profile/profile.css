@@ -31,6 +31,8 @@
 .tt {
   color: rgb(198, 196, 196);
   font-size: 15px;
+  text-align: center;
+  margin-top: 25px;
 }
 .att1,
 .att2 {
@@ -39,6 +41,8 @@
   border-radius: 10px;
   color: white;
   margin: 10px;
+  height: 45%;
+  text-align: center;
 }
 
 .profile-table th,

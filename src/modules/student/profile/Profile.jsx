@@ -11,7 +11,7 @@ function Profile() {
           <h1 className="head">Profile</h1>
 
           <section className="dashboard">
-              <h6 className="head_profile">Yeraliyev Berik <br />
+              <h6 className="head_profile">Yeraliyev Berik <br/>
               38516@iitu.edu.kz </h6>
               <div className="wrapper__profile">
 

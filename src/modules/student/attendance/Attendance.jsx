@@ -54,14 +54,6 @@ function Attendance() {
       AdvancedProgramming: { status: 'Present', uploaded: false},
       Blockchain: { status: 'Present', uploaded: false},
     },
-    {
-      date: '2023-11-17',
-      softwareDevelopment: { status: 'Present', uploaded: false },
-      historyAndPhilosophy: { status: 'Absent', uploaded: false },
-      geographicInformationSystems: { status: 'Present', uploaded: false },
-      AdvancedProgramming: { status: 'Present', uploaded: false},
-      Blockchain: { status: 'Present', uploaded: false},
-    },
   ];
 
   const [attendanceData, setAttendanceData] = useState(initialData);
