@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './signin.css';
 import { useNavigate } from "react-router-dom";
-
+import { API_BASE_URL } from '../../constants';
 
 function SignIn() {
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ function SignIn() {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -23,23 +23,33 @@ function SignIn() {
     setPassword(e.target.value);
   };
 
-  const handleSignIn = () => {
-    if (email === '38516@iitu.edu.kz' && password === '123123'){
-      navigate('/dashboard');
-    }
-    if (email === '38515@iitu.edu.kz' && password === '124124') {
-      navigate("/mainpage2");
-    } 
-    else {
-      setError('Incorrect email or password');
+  const handleSignIn = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token;
 
-            // Clear the error state after a delay (e.g., 3 seconds)
-      // setTimeout(() => {
-      //   setError('');
-      // }, 5000);
+        localStorage.setItem('token', token);
 
+        navigate('/dashboard');
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('An error occurred during login:', error);
+      setError('An error occurred during login');
     }
   };
+  
 
   return (
     <div className="Signin">
