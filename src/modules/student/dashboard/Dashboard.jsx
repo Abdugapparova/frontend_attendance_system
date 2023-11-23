@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import "./dashboard.css";
 import Sidebar from "../../../components/sidebar/Sidebar";
+import { API_BASE_URL } from "../../../constants";
 
 function Dashboard() {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date()); // Initialize with a valid date
+  const [scheduleData, setScheduleData] = useState([]);
 
   const handleDateClick = () => {
     setIsCalendarOpen(!isCalendarOpen);
@@ -20,6 +22,30 @@ function Dashboard() {
   const formatDayOfWeek = (date) => {
     return format(date, "EEEE"); // "EEEE" returns the full day name (e.g., "Thursday")
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${API_BASE_URL}/schedule/today?groupId=101`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Basic ${token}`,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setScheduleData(data);
+        } else {
+          console.error('Failed to fetch schedule data');
+        }
+      } catch (error) {
+        console.error('Error while fetching schedule data', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="Dashboard">
@@ -51,27 +77,13 @@ function Dashboard() {
                   </div>
               </div>
               <div className="disciplines">
-                <div className="discipline">
-                  <div className="time">08:00 - 08:50</div>
-                  <div className="name">
-                    Software Development Management and Reengineering, 'Lab' (Atymtayeva L.), Main, 702
+                {scheduleData.map((item) => (
+                  <div className="discipline" key={item.scheduleId}>
+                    <div className="time">{`${format(new Date(item.startTime), 'HH:mm')} - ${format(new Date(item.endTime), 'HH:mm')}`}</div>
+                    <div className="name">{`${item.courseName}, '${item.classroom}' (${item.teacherName}), ${item.groupName}`}</div>
+                    <div className="status status__present">Present</div>
                   </div>
-                  <div className="status status__present">Present</div>
-                </div>
-                <div className="discipline">
-                  <div className="time">09:00 - 09:50</div>
-                  <div className="name">
-                    History and philosophy of science, 'L' (Kydyrbekuly D.), Main, 901
-                  </div>
-                  <div className="status status__absent">Absent</div>
-                </div>
-                <div className="discipline">
-                  <div className="time">08:00 - 08:50</div>
-                  <div className="name">
-                    Software Development Management and Reengineering, 'Lab' (Atymtayeva L.), Main, 702
-                  </div>
-                  <div className="status status__present">Present</div>
-                </div>
+                ))}
               </div>
             </div>
           </section>
