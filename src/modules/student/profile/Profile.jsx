@@ -11,8 +11,8 @@ function Profile() {
           <h1 className="head">Profile</h1>
 
           <section className="dashboard">
-              <h6 className="head_profile">Yeraliyev Berik <br/>
-              38516@iitu.edu.kz </h6>
+              <h6 className="head_profile">Abdugapparova Kamila <br/>
+              38515@iitu.edu.kz </h6>
               <div className="wrapper__profile">
 
               <table className="profile-table">
@@ -50,7 +50,7 @@ function Profile() {
               <div className="att">
                 <div className="att1">
                   <p className="tt">Student who can mark you</p>
-                  Abdugapparova Kamila <br />38515@iitu.edu.kz</div>
+                  Abdikali Yelzhas <br />38520@iitu.edu.kz</div>
                 <div className="att2">
                   <p className="tt">Student you can mark</p>
                   Moldatayeva Assem  <br />38533@iitu.edu.kz</div>

@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./dashboard.css";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import { API_BASE_URL } from "../../../constants";
+import user from "../../../assets/images/user.png";
 
 function Dashboard() {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
@@ -20,7 +21,7 @@ function Dashboard() {
   };
 
   const formatDayOfWeek = (date) => {
-    return format(date, "EEEE"); // "EEEE" returns the full day name (e.g., "Thursday")
+    return format(date, "EEEE");
   };
 
   useEffect(() => {
