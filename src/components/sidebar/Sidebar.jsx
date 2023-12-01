@@ -16,9 +16,6 @@ import userC from "../../assets/images/circle-user.png";
 import menu from "../../assets/images/menu.png";
 import cancel from "../../assets/images/cancel1.png";
 
-
-
-
 import { useSidebar } from "./SidebarProvider";
 
 

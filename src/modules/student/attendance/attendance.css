@@ -19,7 +19,6 @@
   background-color: #fff;
   table-layout: fixed;
   border: #000;
-  border-radius: 50px;
 }
 
 .attendance-table th,
@@ -28,33 +27,23 @@
   padding: 8px;
   text-align: center;
   height: 50px;
-  position: relative;
+  width: 100px;
+  /* position: relative; */
 }
+.soft {
+  width: 50px;
+}
+.attendance-table th {
+  background-color: #d1e5f8;
+  border-radius: 0%;
+}
+
 .dashboard {
   border-radius: 10px;
 }
 .attendance-table th {
   font-weight: normal;
-}
-
-.attendance-table th:nth-child(1),
-.attendance-table td:nth-child(1) {
-  width: 20%;
-}
-
-.attendance-table th:nth-child(2),
-.attendance-table td:nth-child(2) {
-  width: 50%;
-}
-
-.attendance-table th:nth-child(3),
-.attendance-table td:nth-child(3) {
-  width: 25%;
-}
-
-.attendance-table th:nth-child(4),
-.attendance-table td:nth-child(4) {
-  width: 25%;
+  text-align: center;
 }
 
 .upload-button {
@@ -71,13 +60,16 @@
   margin-left: 5px;
 }
 
-.upload-button:hover {
-  background-color: #214371;
+.upload-button.no:hover {
+  background-color: #0d3369;
 }
 
 .upload-button.uploaded {
   background-color: #589c5f;
   border: none;
+}
+.upload-button.confirmed {
+  background-color: green; /* Change this to your desired color */
 }
 
 .fa-upload {
@@ -86,13 +78,15 @@
 
 .checkbox-upload-container {
   display: flex;
-  align-items: center; /* Align items vertically */
+  align-items: center;
+  justify-content: center;
 }
 
 .custom-checkbox {
   margin-right: 10px;
-  width: 20px; /* Set the desired width */
-  height: 20px; /* Set the desired height */
+  width: 20px;
+  height: 20px;
+  text-align: center;
 }
 
 .attendance-table tr.today-row {
@@ -102,10 +96,12 @@
 
 .attendance-table tr.past-row {
   color: #aaa;
+  opacity: 0.8;
 }
 .attendance-table tr.past-row button {
   background-color: #aaafb5;
 }
+
 @media screen and (max-width: 500px) {
   .helpAttendance {
     align-self: center;

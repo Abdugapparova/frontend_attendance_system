@@ -20,7 +20,7 @@ function Schedule() {
       },
       {
         time: "19:30 - 20:20",
-        discipline: "History and Philosophy of Science",
+        title: "History and Philosophy of Science",
         type: "Lecture",
         instructor: "Kydyrbekuly D.B.",
         location: "Main, 901",
@@ -34,7 +34,7 @@ function Schedule() {
       },
       {
         time: "21:30 - 22:20",
-        discipline: "History and Philosophy of Science",
+        title: "History and Philosophy of Science",
         type: "Lab",
         instructor: "Kydyrbekuly D.B.",
         location: "Main, 905",
