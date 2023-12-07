@@ -22,16 +22,18 @@ function SignIn() {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
+  
+  const url = 'http://temirmendigali.xyz/api/auth/login';
   const handleSignIn = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        const response = await fetch(url,{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-      });
+        });
+      console.log(response);
   
       if (response.ok) {
         const data = await response.json();
