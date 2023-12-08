@@ -9,7 +9,7 @@ import user from "../../../assets/images/user.png";
 
 function Dashboard() {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date()); // Initialize with a valid date
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [scheduleData, setScheduleData] = useState([]);
 
   const handleDateClick = () => {
@@ -28,7 +28,7 @@ function Dashboard() {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${API_BASE_URL}/schedule/today?groupId=101`, {
+        const response = await fetch('http://temirmendigali.xyz/api/schedule/today', {
           method: 'GET',
           headers: {
             'Authorization': `Basic ${token}`,
