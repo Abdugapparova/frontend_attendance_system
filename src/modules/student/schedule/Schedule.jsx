@@ -1,132 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "react-datepicker/dist/react-datepicker.css";
 import "./schedule.css";
 import "../dashboard/dashboard.css";
 import Sidebar from "../../../components/sidebar/Sidebar";
+import schedules from "./scheduleData"; // Import schedules data
+
+
 
 function Schedule() {
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const currentDay = daysOfWeek[currentDayIndex];
-  
-  const schedules = {
-    Monday:
-      [
-      {
-        time: "18:30 - 19:20",
-        title: "Pedagogy of Higher Education",
-        type: "Lecture",
-        instructor: "Abdullaeva G.O.",
-        location: "Main, 901",
-      },
-      {
-        time: "19:30 - 20:20",
-        title: "History and Philosophy of Science",
-        type: "Lecture",
-        instructor: "Kydyrbekuly D.B.",
-        location: "Main, 901",
-      },
-      {
-        time: "20:30 - 21:20",
-        title: "Pedagogy of Higher Education",
-        type: "Lab",
-        instructor: "Abdullaeva G.O.",
-        location: "Main, 905",
-      },
-      {
-        time: "21:30 - 22:20",
-        title: "History and Philosophy of Science",
-        type: "Lab",
-        instructor: "Kydyrbekuly D.B.",
-        location: "Main, 905",
-      },
-    ],
-    Tuesday: [
-      {
-        time: "18:30 - 19:20",
-        title: "Methodology of Scientific Research",
-        type: "Lecture",
-        instructor: "Bektemysova G.U.",
-        location: "Main, 800",
-      },
-      {
-        time: "19:30 - 20:20",
-        title: "Methodology of Scientific Research",
-        type: "Lab",
-        instructor: "Bektemysova G.U.",
-        location: "Main, 707",
-      },
-      {
-        time: "20:30 - 21:20",
-        title: "Methodology of Scientific Research",
-        type: "Lab",
-        instructor: "Bektemysova G.U.",
-        location: "Main, 707",
-      },
-    ],
-    Wednesday: [
-      {
-        time: "18:30 - 19:20",
-        title: "Geographic Information Systems",
-        type: "Lecture",
-        instructor: "Tukenova L.M.",
-        location: "Main, 700",
-      },
-      {
-        time: "19:30 - 20:20",
-        title: "Geographic Information Systems",
-        type: "Practice",
-        instructor: "Tukenova L.M.",
-        location: "Main, 705",
-      },
-      {
-        time: "20:30 - 21:20",
-        title: "Geographic Information Systems",
-        type: "Practice",
-        instructor: "Tukenova L.M.",
-        location: "Main, 705",
-      },
-    ],
-    Thursday: [
-      {
-        time: "18:30 - 19:20",
-        title: "Software Development Management and Reengineering",
-        type: "Lecture",
-        instructor: "Atymtaeva L.B.",
-        location: "Main, 700",
-      },
-      {
-        time: "19:30 - 20:20",
-        title: "Software Development Management and Reengineering",
-        type: "Lab",
-        instructor: "Atymtaeva L.B.",
-        location: "Main, 702",
-      },
-      {
-        time: "20:30 - 21:20",
-        title: "Software Development Management and Reengineering",
-        type: "Lab",
-        instructor: "Atymtaeva L.B.",
-        location: "Main, 702",
-      },
-    ],
-    Friday: [
-      {
-        time: "18:30 - 19:20",
-        title: "Advanced Programming",
-        type: "",
-        instructor: "Kozina L.A.",
-        location: "MOOC",
-      },
-      {
-        time: "19:30 - 20:20",
-        title: "Blockchain",
-        type: "",
-        instructor: "Tukenova L.M.",
-        location: "MOOC",
-      },
-    ],
-  };
-  
+  const [scheduleData, setScheduleData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('http://temirmendigali.xyz/api/schedule/week', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setScheduleData(data);
+        } else {
+          console.error('Failed to fetch schedule data');
+        }
+      } catch (error) {
+        console.error('Error while fetching schedule data', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleDayChange = (direction) => {
     if (direction === "prev") {
       setCurrentDayIndex((prevIndex) => (prevIndex - 1 + daysOfWeek.length) % daysOfWeek.length);
@@ -158,7 +68,7 @@ function Schedule() {
                       <div className="status status__present"></div>
                     </div>
                   ))}
-                </div>
+              </div>
             </div>
           </section>
             

@@ -1,52 +1,52 @@
 import React, { useState, useEffect } from "react";
+import { format, getDay, addDays } from "date-fns";
 import DatePicker from "react-datepicker";
-import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import "./dashboard.css";
 import Sidebar from "../../../components/sidebar/Sidebar";
-import { API_BASE_URL } from "../../../constants";
-import user from "../../../assets/images/user.png";
+import schedules from "../schedule/scheduleData";
 
 function Dashboard() {
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [scheduleData, setScheduleData] = useState([]);
-
-  const handleDateClick = () => {
-    setIsCalendarOpen(!isCalendarOpen);
-  };
-
-  const formatDate = (date) => {
-    return format(date, "dd.MM.yyyy");
-  };
-
-  const formatDayOfWeek = (date) => {
-    return format(date, "EEEE");
-  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = localStorage.getItem('token');
-        const response = await fetch('http://temirmendigali.xyz/api/schedule/today', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Basic ${token}`,
-          },
-        });
+        const token = localStorage.getItem("token");
+        const response = await fetch(
+          "http://temirmendigali.xyz/api/schedule/today",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         if (response.ok) {
           const data = await response.json();
           setScheduleData(data);
         } else {
-          console.error('Failed to fetch schedule data');
+          console.error("Failed to fetch schedule data");
         }
       } catch (error) {
-        console.error('Error while fetching schedule data', error);
+        console.error("Error while fetching schedule data", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [selectedDate]);
+
+  const currentDayOfWeek = getDay(selectedDate);
+  const todaySchedule = schedules[Object.keys(schedules)[currentDayOfWeek]];
+
+  const isWeekend = currentDayOfWeek === 0 || currentDayOfWeek === 6;
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setIsCalendarOpen(false);
+  };
 
   return (
     <div className="Dashboard">
@@ -57,35 +57,41 @@ function Dashboard() {
           <section className="dashboard">
             <div className="wrapper__dashboard">
               <div className="first-row">
-                <div className="day-of-the-week">{formatDayOfWeek(selectedDate)}</div>
+                <div className="day-of-the-week">
+                  {format(selectedDate, "EEEE")}
+                </div>
                 <div
                   className={`date date__btn ${
                     isCalendarOpen ? "button-below" : ""
                   }`}
-                  onClick={handleDateClick}
+                  onClick={() => setIsCalendarOpen(!isCalendarOpen)}
                 >
-                  {selectedDate ? formatDate(selectedDate) : "Date"}
-                
-                {isCalendarOpen && (
-                  <DatePicker
-                    className="absolute-calendar"
-                    selected={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
-                    dateFormat="dd.MM.yyyy"
-                    inline
-                  />
+                  {format(selectedDate, "dd.MM.yyyy")}
+                  {isCalendarOpen && (
+                    <DatePicker
+                      selected={selectedDate}
+                      onChange={handleDateChange}
+                      dateFormat="dd.MM.yyyy"
+                      inline
+                    />
                   )}
-                  </div>
+                </div>
               </div>
-              <div className="disciplines">
-                {scheduleData.map((item) => (
-                  <div className="discipline" key={item.scheduleId}>
-                    <div className="time">{`${format(new Date(item.startTime), 'HH:mm')} - ${format(new Date(item.endTime), 'HH:mm')}`}</div>
-                    <div className="name">{`${item.courseName}, '${item.classroom}' (${item.teacherName}), ${item.groupName}`}</div>
-                    <div className="status status__present">Present</div>
-                  </div>
-                ))}
-              </div>
+              {isWeekend ? (
+                <div className="no-courses-message">
+                  No courses for today (Weekend).
+                </div>
+              ) : (
+                <div className="disciplines">
+                  {todaySchedule?.map((item, index) => (
+                    <div className="discipline" key={index}>
+                      <div className="time">{item.time}</div>
+                      <div className="name">{item.title}, '{item.type}', ({item.instructor}), {item.location}</div>
+                      <div className="status">Attendance status</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </section>
         </div>

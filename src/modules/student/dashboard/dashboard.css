@@ -101,11 +101,11 @@ body {
   font-weight: 600;
 }
 
-.date {
+/* .date {
   color: #fff;
   font-size: 18px;
   font-weight: 500;
-}
+} */
 
 .disciplines {
   margin-top: 22px;
@@ -134,6 +134,7 @@ body {
 
 .status {
   padding-right: 44px;
+  color: rgb(189, 188, 188);
 }
 
 .status__present {
@@ -157,19 +158,13 @@ body {
   width: 20px;
   height: 20px;
 }
-.date__btn {
-  width: 132px;
-  height: 45px;
-  padding: 9px 25px;
-  border-radius: 8px;
-  background: #214371;
-  margin-left: 70%;
-  cursor: pointer;
+.no-courses-message {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 13%;
 }
-.date {
-  position: absolute;
-}
-
 @media screen and (max-width: 500px) {
   .discipline {
     font-size: 12px;
