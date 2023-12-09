@@ -3,51 +3,56 @@ import './attendance.css';
 import "../dashboard/dashboard.css";
 import Sidebar from '../../../components/sidebar/Sidebar';
 import Modal from './ReasonModal';
+import initialData from './attendanceData';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import email from "./Login";
+import token from "./Login";
 
 
 function Attendance() {
-  const initialData = [
-    {
-      date: '2023-11-09',
-      softwareDevelopment: { status: 'Present', uploaded: false },
-      historyAndPhilosophy: { status: 'Absent', uploaded: false },
-      geographicInformationSystems: { status: 'Present', uploaded: false },
-      reason: { uploaded: false },
-      attendForAllDay: false,
-    },
-    {
-      date: '2023-11-10',
-      softwareDevelopment: { status: 'Present', uploaded: false },
-      historyAndPhilosophy: { status: 'Absent', uploaded: false },
-      geographicInformationSystems: { status: 'Present', uploaded: false },
-      reason: { uploaded: false },
-      attendForAllDay: false,
-    },
-    {
-      date: '2023-11-13',
-      softwareDevelopment: { status: 'Present', uploaded: false },
-      historyAndPhilosophy: { status: 'Absent', uploaded: false },
-      geographicInformationSystems: { status: 'Present', uploaded: false },
-      reason: { uploaded: false },
-      attendForAllDay: false,
-    },
-    {
-      date: '2023-11-14',
-      softwareDevelopment: { status: 'Present', uploaded: false },
-      historyAndPhilosophy: { status: 'Absent', uploaded: false },
-      geographicInformationSystems: { status: 'Present', uploaded: false },
-      reason: { uploaded: false },
-      attendForAllDay: false,
-    },
-    {
-      date: '2023-12-05',
-      softwareDevelopment: { status: 'Present', uploaded: false },
-      historyAndPhilosophy: { status: 'Absent', uploaded: false },
-      geographicInformationSystems: { status: 'Present', uploaded: false },
-      reason: { uploaded: false },
-      attendForAllDay: false,
-    },
-  ];
+  const [buttonClass, setButtonClass] = useState(""); // New state to manage button class
+
+    const handleSend = async () => {
+      const sendData = {
+        email: email,
+      };
+    
+      try {
+        const response = await fetch('http://temirmendigali.xyz/api/attendance/save', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(sendData),
+        });
+
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token;
+  
+        localStorage.setItem('token', token);
+        toast.success("Attendance data sent successfully!", {
+          autoClose: 10000,
+        });
+        setButtonClass("green");
+  
+        setTimeout(() => {
+          window.location.reload();
+        }, 10000);
+      }
+        if (response == 200) { 
+        
+      } 
+      else {
+        console.error("Failed to send attendance data");
+      }
+    } catch (error) {
+      console.error("Error during attendance data send:", error);
+    };
+  };
+  
 
   const [attendanceData, setAttendanceData] = useState(initialData);
 
@@ -142,8 +147,6 @@ function Attendance() {
     });
   };
 
-
-
   //send absence certificate
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRowIndex, setSelectedRowIndex] = useState(null);
@@ -159,6 +162,23 @@ function Attendance() {
   const closeModal = () => {
     setSelectedRowIndex(null);
     setIsModalOpen(false);
+  };
+
+
+  const [isSendButtonActive, setIsSendButtonActive] = useState(false);
+
+  useEffect(() => {
+    // Check if any checkbox is checked to activate the Send button
+    const anyCheckboxChecked =
+      checkedRowsSoftware.some((isChecked) => isChecked) ||
+      checkedRowsHistory.some((isChecked) => isChecked) ||
+      checkedRowsGeographic.some((isChecked) => isChecked);
+
+    setIsSendButtonActive(anyCheckboxChecked);
+  }, [checkedRowsSoftware, checkedRowsHistory, checkedRowsGeographic]);
+
+  const handleSendButtonClick = () => {
+    console.log('Sending attendance data:', attendanceData);
   };
 
   return (
@@ -219,7 +239,7 @@ function Attendance() {
                         </div>
                       </td>
                       <td>
-                      <button
+                        <button
                           className={`upload-button ${rowData.reason.uploaded ? 'uploaded' : 'no'} ${isReasonConfirmed ? 'confirmed' : ''}`}
                           onClick={() => openModal(index)}
                         >
@@ -241,8 +261,21 @@ function Attendance() {
                   ))}
                 </tbody>
               </table>
+              
+              <div className="send-button-container">
+                <button
+                  className="send-button"
+                  onClick={handleSend}
+                  disabled={!checkedRowsSoftware.some(Boolean) && !checkedRowsHistory.some(Boolean) && !checkedRowsGeographic.some(Boolean) && !checkedRowsAllDay.some(Boolean)}
+                >
+                  Mark my attendance
+
+                </button>
+              </div>
             </div>
+            
           </section>
+          
         </div>
       </div>
       <Modal

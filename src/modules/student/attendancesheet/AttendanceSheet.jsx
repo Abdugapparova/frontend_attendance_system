@@ -49,123 +49,121 @@ function AttendanceSheet() {
                       <div className="icon-container red-icon"></div>
                     </th>
                     <th>Subject</th>
-                    <th>2023-09-04</th>
-                    <th>2023-09-05</th>
-                    <th>2023-09-06</th>
-                    <th>2023-09-07</th>
-                    <th>2023-09-08</th>
-                    <th>2023-09-09</th>
-                    <th>2023-09-10</th>
+                    <th>2023-12-04</th>
+                    <th>2023-12-05</th>
+                    <th>2023-12-06</th>
+                    <th>2023-12-07</th>
+                    <th>2023-12-08</th>
+                    <th>2023-12-11</th>
+                    <th>2023-12-12</th>
+
                   </tr>
                 </thead>
                 <tbody>
                   {attendanceData.map((rowData, index) => (
                     <React.Fragment key={index}>
                       <tr>
-                       <td>60%</td>
-                       <td>15%</td>
-                       <td>6%</td>
-                       <td>Software Development Management and Reengineering (Lecture)</td>
-                       <td className="icon-column">
-                        <div className="icon-container green-icon"></div>
-                       </td>
-                       <td className="icon-column">
-                        <div className="icon-container yellow-icon"></div>
-                       </td>
-                       <td className="icon-column">
-                        <div className="icon-container green-icon"></div>
-                       </td>
-                       <td></td>
-                       <td className="icon-column">
-                        <div className="icon-container red-icon"></div>
-                       </td>
-                       <td className="icon-column">
-                        <div className="icon-container green-icon"></div>
-                       </td>
-                       <td></td>
+                        <td>60%</td>
+                        <td>15%</td>
+                        <td>6%</td>
+                        <td>Software Development Management and Reengineering (Lecture)</td>
+                        <td className="icon-column">
+                          <div className="icon-container green-icon"></div>
+                        </td>
+                        <td className="icon-column">
+                          <div className="icon-container yellow-icon"></div>
+                        </td>
+                        <td className="icon-column">
+                          <div className="icon-container green-icon"></div>
+                        </td>
+                        <td></td>
+                        <td className="icon-column">
+                          <div className="icon-container red-icon"></div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+
+                      <tr>
+                        <td>70%</td>
+                        <td>10%</td>
+                        <td>20%</td>
+                        <td>History and philosophy of science (Lab)</td>
+                        <td className="icon-column">
+                          <div className="icon-container green-icon"></div>
+                        </td>
+                        <td className="icon-column">
+                          <div className="icon-container green-icon"></div>
+                        </td>
+                        <td></td>
+                        <td className="icon-column">
+                          <div className="icon-container green-icon"></div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                       </tr>
                       <tr>
-                       <td>70%</td>
-                       <td>10%</td>
-                       <td>20%</td>
-                       <td>History and philosophy of science (Lab)</td>
-                       <td className="icon-column">
-                        <div className="icon-container green-icon"></div>
-                       </td>
-                       <td className="icon-column">
-                        <div className="icon-container green-icon"></div>
-                       </td>
-                       <td></td>
-                       <td className="icon-column">
-                        <div className="icon-container green-icon"></div>
-                       </td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                       <tr>
-                       <td>70%</td>
-                       <td>10%</td>
-                       <td>20%</td>
-                       <td>Geographic Information Systems</td>
-                       <td className="icon-column">
-                        <div className="icon-container green-icon"></div>
-                       </td>
-                       <td></td>
-                       <td className="icon-column">
-                        <div className="icon-container green-icon"></div>
-                       </td>
-                       <td className="icon-column">
-                        <div className="icon-container yellow-icon"></div>
-                       </td>
-                       <td className="icon-column">
-                        <div className="icon-container yellow-icon"></div>
-                       </td>
-                       <td className="icon-column">
-                        <div className="icon-container green-icon"></div>
-                       </td>
-                       <td></td>
+                        <td>70%</td>
+                        <td>10%</td>
+                        <td>20%</td>
+                        <td>Geographic Information Systems</td>
+                        <td className="icon-column">
+                          <div className="icon-container green-icon"></div>
+                        </td>
+                        <td></td>
+                        <td className="icon-column">
+                          <div className="icon-container green-icon"></div>
+                        </td>
+                        <td className="icon-column">
+                          <div className="icon-container yellow-icon"></div>
+                        </td>
+                        <td className="icon-column">
+                          <div className="icon-container yellow-icon"></div>
+                        </td>
+                        <td></td>
+                        <td></td>
                       </tr>
-                      
-                       <tr>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                       <tr>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       </tr>
-                       <tr>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       </tr>
+
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
                     </React.Fragment>
                   ))}
                 </tbody>
@@ -176,7 +174,7 @@ function AttendanceSheet() {
       </div>
     </div>
   );
-  }
+}
   
-  export default AttendanceSheet;
+export default AttendanceSheet;
   

@@ -102,6 +102,30 @@
   background-color: #aaafb5;
 }
 
+.send-button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.send-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #0d3369;
+  color: white;
+  border-radius: 4px;
+}
+
+.send-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+/* Add the following CSS to your attendance.css file */
+.green {
+  background-color: green; /* You can customize this color */
+  color: white;
+}
+
 @media screen and (max-width: 500px) {
   .helpAttendance {
     align-self: center;
