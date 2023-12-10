@@ -50,7 +50,7 @@ function Sidebar(){
         } else if (email === '38520@iitu.edu.kz') {
             specialUsername = 'Yelzhas Abdikali';
         } else {
-            specialUsername = 'Guest';
+            specialUsername = 'Kamila Abdugapparova';
         }
         
         setUsername(specialUsername);
