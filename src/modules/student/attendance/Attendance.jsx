@@ -25,7 +25,10 @@ function Attendance() {
   const [showMessageWindow1, setShowMessageWindow1] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const handleSend1 = () => {
+    setShowMessageWindow(true);
 
+}
 
   const handleSend = async () => {
     const sendData = {
@@ -274,7 +277,7 @@ function Attendance() {
               <div className="send-button-container">
                 <button
                   className="send-button"
-                  onClick={handleSend}
+                  onClick={handleSend1}
                   disabled={!checkedRowsSoftware.some(Boolean) && !checkedRowsHistory.some(Boolean) && !checkedRowsGeographic.some(Boolean) && !checkedRowsAllDay.some(Boolean)}
                 >
                   Mark my attendance
