@@ -4,55 +4,65 @@ import "../dashboard/dashboard.css";
 import Sidebar from '../../../components/sidebar/Sidebar';
 import Modal from './ReasonModal';
 import initialData from './attendanceData';
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import email from "./Login";
-import token from "./Login";
 
+const ErrorPopup = ({ message, onClose }) => (
+  <div className="error-popup">
+    <p>{message}</p>
+    <button onClick={(event) => { event.preventDefault(); onClose(); }} className='clBt'>Ok</button>
+  </div>
+);
+const SuccessPopup = ({ message,onClose }) => (
+  <div className="success-popup">
+    <p>{ message}</p>
+    <button onClick={onClose} className='okBt'>Ok</button>
+  </div>
+);
 
 function Attendance() {
-  const [buttonClass, setButtonClass] = useState(""); // New state to manage button class
+  const [buttonClass, setButtonClass] = useState("");
+  const [showMessageWindow, setShowMessageWindow] = useState(false);
+  const [showMessageWindow1, setShowMessageWindow1] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSend = async () => {
-      const sendData = {
-        email: email,
-      };
-    
-      try {
-        const response = await fetch('http://temirmendigali.xyz/api/attendance/save', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(sendData),
-        });
+
+
+  const handleSend = async () => {
+    const sendData = {
+      email: "38532@iitu.edu.kz",
+    };
+
+    try {
+      const token = localStorage.getItem('token');
+
+      const response = await fetch('http://temirmendigali.xyz/api/attendance/save?groupId=101', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Basic ${token}`,
+        },
+        body: JSON.stringify(sendData),
+      });
 
       if (response.ok) {
         const data = await response.json();
-        const token = data.token;
-  
-        localStorage.setItem('token', token);
-        toast.success("Attendance data sent successfully!", {
-          autoClose: 10000,
-        });
+        setShowMessageWindow1(true);
         setButtonClass("green");
-  
-        setTimeout(() => {
-          window.location.reload();
-        }, 10000);
-      }
-        if (response == 200) { 
-        
-      } 
-      else {
+
+      } else if (response.status === 404) {
+        const errorData = await response.json();
+        if (errorData.httpStatus === '404' && errorData.message === 'Currently no lesson for group SE-231M') {
+          setShowMessageWindow(true);
+        } else {
+          console.error("Failed to send attendance data:", errorData);
+        }
+      } else {
         console.error("Failed to send attendance data");
       }
     } catch (error) {
       console.error("Error during attendance data send:", error);
-    };
+    }
   };
-  
 
   const [attendanceData, setAttendanceData] = useState(initialData);
 
@@ -104,48 +114,48 @@ function Attendance() {
   }
 
   // all day attend
-  const handleCheckboxChange1 = (index, column) => {
-    setCheckedRowsAllDay((prevCheckedRowsAllDay) => {
-      const newCheckedRowsAllDay = [...prevCheckedRowsAllDay];
-      newCheckedRowsAllDay[index] = !newCheckedRowsAllDay[index];
+  // const handleCheckboxChange1 = (index, column) => {
+  //   setCheckedRowsAllDay((prevCheckedRowsAllDay) => {
+  //     const newCheckedRowsAllDay = [...prevCheckedRowsAllDay];
+  //     newCheckedRowsAllDay[index] = !newCheckedRowsAllDay[index];
 
-      if (newCheckedRowsAllDay[index]) {
-        setCheckedRowsSoftware((prev) => {
-          const newCheckedRows = [...prev];
-          newCheckedRows[index] = true;
-          return newCheckedRows;
-        });
-        setCheckedRowsHistory((prev) => {
-          const newCheckedRows = [...prev];
-          newCheckedRows[index] = true;
-          return newCheckedRows;
-        });
-        setCheckedRowsGeographic((prev) => {
-          const newCheckedRows = [...prev];
-          newCheckedRows[index] = true;
-          return newCheckedRows;
-        });
-      } else {
-        setCheckedRowsSoftware((prev) => {
-          const newCheckedRows = [...prev];
-          newCheckedRows[index] = false;
-          return newCheckedRows;
-        });
-        setCheckedRowsHistory((prev) => {
-          const newCheckedRows = [...prev];
-          newCheckedRows[index] = false;
-          return newCheckedRows;
-        });
-        setCheckedRowsGeographic((prev) => {
-          const newCheckedRows = [...prev];
-          newCheckedRows[index] = false;
-          return newCheckedRows;
-        });
-      }
+  //     if (newCheckedRowsAllDay[index]) {
+  //       setCheckedRowsSoftware((prev) => {
+  //         const newCheckedRows = [...prev];
+  //         newCheckedRows[index] = true;
+  //         return newCheckedRows;
+  //       });
+  //       setCheckedRowsHistory((prev) => {
+  //         const newCheckedRows = [...prev];
+  //         newCheckedRows[index] = true;
+  //         return newCheckedRows;
+  //       });
+  //       setCheckedRowsGeographic((prev) => {
+  //         const newCheckedRows = [...prev];
+  //         newCheckedRows[index] = true;
+  //         return newCheckedRows;
+  //       });
+  //     } else {
+  //       setCheckedRowsSoftware((prev) => {
+  //         const newCheckedRows = [...prev];
+  //         newCheckedRows[index] = false;
+  //         return newCheckedRows;
+  //       });
+  //       setCheckedRowsHistory((prev) => {
+  //         const newCheckedRows = [...prev];
+  //         newCheckedRows[index] = false;
+  //         return newCheckedRows;
+  //       });
+  //       setCheckedRowsGeographic((prev) => {
+  //         const newCheckedRows = [...prev];
+  //         newCheckedRows[index] = false;
+  //         return newCheckedRows;
+  //       });
+  //     }
 
-      return newCheckedRowsAllDay;
-    });
-  };
+  //     return newCheckedRowsAllDay;
+  //   });
+  // };
 
   //send absence certificate
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -168,7 +178,6 @@ function Attendance() {
   const [isSendButtonActive, setIsSendButtonActive] = useState(false);
 
   useEffect(() => {
-    // Check if any checkbox is checked to activate the Send button
     const anyCheckboxChecked =
       checkedRowsSoftware.some((isChecked) => isChecked) ||
       checkedRowsHistory.some((isChecked) => isChecked) ||
@@ -201,7 +210,7 @@ function Attendance() {
                     <th>History and philosophy of science</th>
                     <th>Geographic Information Systems</th>
                     <th>Absence certificate</th>
-                    <th>Attend for all day</th>
+                    {/* <th>Attend for all day</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -247,7 +256,7 @@ function Attendance() {
                         </button>
 
                       </td>
-                      <td>
+                      {/* <td>
                         <div className="checkbox-upload-container">
                           <input
                             type="checkbox"
@@ -256,7 +265,7 @@ function Attendance() {
                             className="custom-checkbox"
                           />
                         </div>
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
@@ -278,6 +287,18 @@ function Attendance() {
           
         </div>
       </div>
+      {showMessageWindow && (
+        <ErrorPopup
+          message="Currently no lesson for group SE-231M"
+          onClose={() => setShowMessageWindow(false)}
+        />
+      )}
+      {showMessageWindow1 && (
+        <SuccessPopup
+          message="You successfully checked in class!"
+          onClose={() => setShowMessageWindow1(false)}
+        />
+      )}
       <Modal
         isOpen={isModalOpen}
         closeModal={closeModal}

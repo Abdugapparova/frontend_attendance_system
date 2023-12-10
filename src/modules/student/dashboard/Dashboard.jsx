@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./dashboard.css";
 import Sidebar from "../../../components/sidebar/Sidebar";
-import schedules from "../schedule/scheduleData";
+import schedules from "./scheduleData";
 
 function Dashboard() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -16,11 +16,11 @@ function Dashboard() {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          "http://temirmendigali.xyz/api/schedule/today",
+          "http://temirmendigali.xyz/api/schedule/today?groupId=101",
           {
             method: "GET",
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Basic ${token}`,
             },
           }
         );
@@ -82,6 +82,15 @@ function Dashboard() {
                   No courses for today (Weekend).
                 </div>
               ) : (
+              //   <div className="disciplines">
+              //   {scheduleData.map((item) => (
+              //     <div className="discipline" key={item.scheduleId}>
+              //       <div className="time">{`${format(new Date(item.startTime), 'HH:mm')} - ${format(new Date(item.endTime), 'HH:mm')}`}</div>
+              //       <div className="name">{`${item.courseName}, '${item.classroom}' (${item.teacherName}), ${item.groupName}`}</div>
+              //       <div className="status status__present">Present</div>
+              //     </div>
+              //   ))}
+              // </div>
                 <div className="disciplines">
                   {todaySchedule?.map((item, index) => (
                     <div className="discipline" key={index}>

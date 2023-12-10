@@ -17,10 +17,10 @@ function Schedule() {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://temirmendigali.xyz/api/schedule/week', {
+        const response = await fetch('http://temirmendigali.xyz/api/schedule/week?groupId=101', {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Basic ${token}`,
           },
         });
         if (response.ok) {
