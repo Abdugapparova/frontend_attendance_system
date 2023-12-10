@@ -38,7 +38,9 @@ function SignIn() {
       if (response.ok) {
         const data = await response.json();
         const token = data.token;
+        const email = data.user.email;
 
+        localStorage.setItem('email', email);
         localStorage.setItem('token', token);
 
         navigate('/dashboard');
@@ -108,6 +110,3 @@ function SignIn() {
 }
 
 export default SignIn;
-
-
-

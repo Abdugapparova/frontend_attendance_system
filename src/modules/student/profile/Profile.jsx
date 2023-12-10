@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import "./profile.css";
 import Sidebar from "../../../components/sidebar/Sidebar";
 
 function Profile() {
+  const [username, setUsername] = useState("Default User");
+  const [email1, setEmail1] = useState('');
+
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    let specialUsername = '';
+    if (email === '38515@iitu.edu.kz') {
+      specialUsername = 'Kamila Abdugapparova';
+    } else if (email === '38532@iitu.edu.kz') {
+      specialUsername = 'Temir Mendigali';
+    } else if (email === '38533@iitu.edu.kz') {
+      specialUsername = 'Assem Moldatayeva';
+    }else if (email === '38516@iitu.edu.kz') {
+      specialUsername = 'Altair Alimzhanov';
+    } else if (email === '38520@iitu.edu.kz') {
+      specialUsername = 'Yelzhas Abdikali';
+    }else {
+      specialUsername = 'Guest';
+    }
+    setUsername(specialUsername);
+    setEmail1(email);
+    console.log(email);
+  }, []);
+
   return (
     <div className="Profile">
       <div className="flex">
@@ -11,8 +35,8 @@ function Profile() {
           <h1 className="head">Profile</h1>
 
           <section className="dashboard">
-              <h6 className="head_profile">Abdugapparova Kamila <br/>
-              38515@iitu.edu.kz </h6>
+            <h6 className="head_profile">{username} <br/>
+              {email1} </h6>
               <div className="wrapper__profile">
 
               <table className="profile-table">

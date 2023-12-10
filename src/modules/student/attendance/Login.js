@@ -5,11 +5,19 @@ function Login() {
   const [token, setToken] = useState("");
 
   const handleLogin = async () => {
-    const response = await fetch("http://temirmendigali.xyz/api/auth/login");
-    const data = await response.json();
+    try {
+      const response = await fetch("http://temirmendigali.xyz/api/auth/login");
+      const data = await response.json();
 
-    setEmail(data.user.email);
-    setToken(data.token);
+      if (data && data.user && data.user.email) {
+        setEmail(data.user.email);
+        setToken(data.token);
+      } else {
+        console.error("Invalid response format");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
 
   return (

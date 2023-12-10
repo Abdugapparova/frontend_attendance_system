@@ -44,11 +44,22 @@
   height: 45%;
   text-align: center;
 }
+.att1:hover,
+.att2:hover {
+  background-color: #133e78;
+  padding: 12px;
+}
 
 .profile-table th,
 .profile-table td {
   padding: 10px;
   border: 1px solid #ddd;
+}
+.profile-table th:hover,
+.profile-table td:hover {
+  padding: 12px;
+  background-color: #133e78;
+  color: white;
 }
 
 .blue-background {

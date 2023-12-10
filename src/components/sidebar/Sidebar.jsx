@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./sidebar.css";
 import { NavLink,Link } from "react-router-dom";
 import control from "../../assets/images/control.png";
@@ -18,9 +18,7 @@ import cancel from "../../assets/images/cancel1.png";
 
 import { useSidebar } from "./SidebarProvider";
 
-
-
-function Sidebar() {
+function Sidebar(){
     const { open, setOpen, activeLink, setActiveLink } = useSidebar();
 
 
@@ -35,6 +33,31 @@ function Sidebar() {
 
         { title: "Logout", src: exit, gap: true, to: "/", className: "logout-link" },
     ];
+
+    const [username, setUsername] = useState("Default User");
+
+    useEffect(() => {
+        const email = localStorage.getItem("email");
+        let specialUsername = '';
+        if (email === '38515@iitu.edu.kz') {
+            specialUsername = 'Kamila Abdugapparova';
+        } else if (email === '38532@iitu.edu.kz') {
+            specialUsername = 'Temir Mendigali';
+        } else if (email === '38533@iitu.edu.kz') {
+            specialUsername = 'Assem Moldatayeva';
+        } else if (email === '38516@iitu.edu.kz') {
+            specialUsername = 'Altair Alimzhanov';
+        } else if (email === '38520@iitu.edu.kz') {
+            specialUsername = 'Yelzhas Abdikali';
+        } else {
+            specialUsername = 'Guest';
+        }
+        
+        setUsername(specialUsername);
+        console.log(email);
+    }, []);
+
+
     return (
         <div>
             <div className={` ${open ? "w-60" : "w-20 "} bg-dark-purple h-screen pt-8 relative duration-300`}>
@@ -65,10 +88,11 @@ function Sidebar() {
             <Link to="/profile" className="user-header">
                 <img src={logo} className="logoSidebar" />
                 <h1 className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"}`}>
-                    Attendance <br className="small-br" /> System
+                    Attendance <br className="small-br" /> System email1
                 </h1>
                 <img src={userC} alt="User Icon" className="user-icon" />
-                <span className="user-name">Kamila Abdugapparova</span>
+                {/* <span className="user-name">Kamila Abdugapparova</span> */}
+                <span className="user-name">{username}</span>
             </Link>
                 
         </div>
