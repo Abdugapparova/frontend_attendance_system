@@ -76,7 +76,9 @@ function AttendanceSheet() {
                         <td className="icon-column">
                           <div className="icon-container green-icon"></div>
                         </td>
-                        <td></td>
+                        <td>
+                          <div className="icon-container green-icon"></div>
+                        </td>
                         <td className="icon-column">
                           <div className="icon-container red-icon"></div>
                         </td>
@@ -95,11 +97,15 @@ function AttendanceSheet() {
                         <td className="icon-column">
                           <div className="icon-container green-icon"></div>
                         </td>
-                        <td></td>
+                        <td>
+                          <div className="icon-container red-icon"></div>
+                        </td>
                         <td className="icon-column">
                           <div className="icon-container green-icon"></div>
                         </td>
-                        <td></td>
+                        <td>
+                        <div className="icon-container yellow-icon"></div>
+                        </td>
                         <td></td>
                         <td></td>
                       </tr>
@@ -111,7 +117,9 @@ function AttendanceSheet() {
                         <td className="icon-column">
                           <div className="icon-container green-icon"></div>
                         </td>
-                        <td></td>
+                        <td>
+                          <div className="icon-container red-icon"></div>
+                        </td>
                         <td className="icon-column">
                           <div className="icon-container green-icon"></div>
                         </td>
